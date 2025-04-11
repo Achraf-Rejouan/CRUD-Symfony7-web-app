@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Form\ArticleType;
 
 
 class IndexController extends AbstractController
@@ -41,14 +42,12 @@ class IndexController extends AbstractController
     public function new(Request $request, EntityManagerInterface $em): Response
     {
         $article = new Article();
-        $form = $this->createFormBuilder($article)
-            ->add('nom', TextType::class)
-            ->add('prix', TextType::class)
-            ->add('save', SubmitType::class, array('label' => 'Créer'))
-            ->getForm();
-
+        $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
+            $article = $form->getData();
+            $em->getRepository(Article::class);
             $em->persist($article);
             $em->flush();
             return $this->redirectToRoute('article_list');
