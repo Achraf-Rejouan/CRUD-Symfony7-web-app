@@ -30,22 +30,15 @@ cd your-repo-name
 composer install
 ```
 
-### 3. Set up environment variables
 
-Create a local environment file:
-
-```bash
-cp .env .env.local
-```
-
-### 4. Set up the database
+### 3. Set up the database
 
 ```bash
 php bin/console doctrine:database:create
 php bin/console doctrine:migrations:migrate
 ```
 
-### 5. Run the Symfony server
+### 4. Run the Symfony server
 
 Using Symfony CLI:
 
