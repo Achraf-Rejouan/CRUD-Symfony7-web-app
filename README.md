@@ -1,27 +1,52 @@
-# Symfony project with Article management functionality
+# Symfony 7 Project Setup
 
-- Added Doctrine and Migrations bundles for database management.
-- Configured asset mapper, CSRF protection, and debug settings.
-- Set up mailer and messenger configurations for asynchronous processing.
-- Created Article entity with validation constraints and repository.
-- Implemented CRUD operations for Article in IndexController.
-- Developed forms for creating and editing articles.
-- Added Twig templates for displaying articles, including list, show, edit, and new article forms.
-- Established routing for article management and security configurations.
-- Included PHPUnit configuration for testing.
-- Created base layout and navigation for the application.
+This guide will help you set up and run this Symfony 7 project on your local machine.
 
-## Requirements
+---
 
-- PHP 8.1 or higher
-- Composer
-- Symfony CLI
-- Database MySQL
+## 🧰 Requirements
 
-## Installation
+Make sure you have the following installed:
 
-1. Clone the repository:
+- PHP >= 8.2
+- [Composer](https://getcomposer.org/)
+- [Symfony CLI (optional but recommended)](https://symfony.com/download)
+- MySQL (or another DB, depending on your project)
 
-   ```sh
-   git clone https://github.com/Achraf-Rejouan/CRUD-Symfony-web-app.git
-   cd your-repository
+---
+
+## 🚀 Installation Steps
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/your-username/your-repo-name.git
+cd your-repo-name
+```
+
+### 2. Install PHP dependencies
+
+```bash
+composer install
+```
+
+
+### 3. Set up the database
+
+```bash
+php bin/console doctrine:database:create
+php bin/console doctrine:migrations:migrate
+```
+
+### 4. Run the Symfony server
+
+Using Symfony CLI:
+
+```bash
+symfony server:start
+```
+
+---
+
+
+
