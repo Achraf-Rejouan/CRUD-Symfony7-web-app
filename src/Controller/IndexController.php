@@ -11,10 +11,33 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Form\ArticleType;
+use App\Entity\Categorie;
+use App\Form\CategorieType;
 
 
 class IndexController extends AbstractController
 {
+    #[Route('/categorie/new', name: 'new_categorie', methods: ['GET', 'POST'])]
+    public function newCategorie(Request $req, EntityManagerInterface $em): Response
+    {
+        $categorie = new Categorie();
+        $form = $this->createForm(CategorieType::class, $categorie);
+        $form->handleRequest($req);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $categorie = $form->getData();
+            $em->getRepository(Categorie::class);
+            $em->persist($categorie);
+            $em->flush();
+            return $this->redirectToRoute('article_list');
+        }
+        return $this->render('articles/newCategorie.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+
+
     #[Route('/', name: 'article_list')]
     public function home(EntityManagerInterface $em): Response
     {

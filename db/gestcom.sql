@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 11, 2025 at 11:57 PM
+-- Generation Time: Apr 15, 2025 at 01:15 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -30,18 +30,37 @@ SET time_zone = "+00:00";
 CREATE TABLE `article` (
   `id` int(11) NOT NULL,
   `nom` varchar(255) NOT NULL,
-  `prix` decimal(10,0) NOT NULL
+  `prix` decimal(10,0) NOT NULL,
+  `categorie_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `article`
 --
 
-INSERT INTO `article` (`id`, `nom`, `prix`) VALUES
-(1, 'Article 1', 1000),
-(2, 'Article 2', 1500),
-(3, 'Article 3', 3000),
-(5, 'Article 4', 4250);
+INSERT INTO `article` (`id`, `nom`, `prix`, `categorie_id`) VALUES
+(6, 'Samsung S25 Ultra', 4599, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categorie`
+--
+
+CREATE TABLE `categorie` (
+  `id` int(11) NOT NULL,
+  `titre` varchar(255) NOT NULL,
+  `description` longtext DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `categorie`
+--
+
+INSERT INTO `categorie` (`id`, `titre`, `description`) VALUES
+(1, 'SmartPhones', 'No Desc'),
+(2, 'Laptop\'s', 'No Desc'),
+(3, 'Desktop\'s', 'No Desc');
 
 -- --------------------------------------------------------
 
@@ -60,7 +79,8 @@ CREATE TABLE `doctrine_migration_versions` (
 --
 
 INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_time`) VALUES
-('DoctrineMigrations\\Version20250411205652', '2025-04-11 22:57:25', 53);
+('DoctrineMigrations\\Version20250411205652', '2025-04-11 22:57:25', 53),
+('DoctrineMigrations\\Version20250415105105', '2025-04-15 12:52:03', 89);
 
 -- --------------------------------------------------------
 
@@ -86,6 +106,13 @@ CREATE TABLE `messenger_messages` (
 -- Indexes for table `article`
 --
 ALTER TABLE `article`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `IDX_23A0E66BCF5E72D` (`categorie_id`);
+
+--
+-- Indexes for table `categorie`
+--
+ALTER TABLE `categorie`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -111,13 +138,29 @@ ALTER TABLE `messenger_messages`
 -- AUTO_INCREMENT for table `article`
 --
 ALTER TABLE `article`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `categorie`
+--
+ALTER TABLE `categorie`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `messenger_messages`
 --
 ALTER TABLE `messenger_messages`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `article`
+--
+ALTER TABLE `article`
+  ADD CONSTRAINT `FK_23A0E66BCF5E72D` FOREIGN KEY (`categorie_id`) REFERENCES `categorie` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
