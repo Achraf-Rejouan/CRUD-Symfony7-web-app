@@ -3,9 +3,41 @@
 {% block title %}Modifier Article{% endblock %}
 
 {% block body %}
+<div class="container mt-5">
+    <div class="card shadow-lg bg-dark text-white rounded-lg">
+        <div class="card-header border-secondary">
+            <h3 class="mb-0 text-uppercase">Modifier l'article</h3>
+        </div>
+        <div class="card-body">
+            {{ form_start(form, {'attr': {'class': 'needs-validation'}}) }}
 
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button type="submit" class="btn btn-success">Modifier</button>
-    {{ form_end(form) }}
+            <div class="form-group">
+                {{ form_label(form.nom, null, {'label_attr': {'class': 'form-label'}}) }}
+                {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.nom) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.prix, null, {'label_attr': {'class': 'form-label'}}) }}
+                {{ form_widget(form.prix, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.prix) }}
+            </div>
+
+            {% if form.categorie is defined %}
+            <div class="form-group">
+                {{ form_label(form.categorie, null, {'label_attr': {'class': 'form-label'}}) }}
+                {{ form_widget(form.categorie, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.categorie) }}
+            </div>
+            {% endif %}
+
+            <div class="mt-4">
+                <button type="submit" class="btn btn-success btn-block">💾 Enregistrer les modifications</button>
+                <a href="{{ path('article_list') }}" class="btn btn-outline-light btn-block mt-2">Retour</a>
+            </div>
+
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>
 {% endblock %}

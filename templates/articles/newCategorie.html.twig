@@ -1,11 +1,37 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ajouter Catégorie{% endblock %}
+{% block title %}Ajouter une Catégorie{% endblock %}
 
 {% block body %}
-    {{ form_start(form)}}
-    {{ form_widget(form) }}
-    <button type="submit" class="btn btn-success">Créer</button>
-    {{ form_end(form) }}
+<div class="container mt-5">
+    <div class="card bg-dark text-white shadow-lg rounded-lg">
+        <div class="card-header border-secondary">
+            <h3 class="mb-0 text-uppercase">Ajouter une catégorie</h3>
+        </div>
+        <div class="card-body">
+            {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
 
+            {% for field in form %}
+                {% if field.vars.name != '_token' %}
+                    <div class="form-group">
+                        {{ form_label(field, null, {'label_attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(field, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_errors(field) }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+
+            <div class="mt-4">
+                <button type="submit" class="btn btn-success btn-block">
+                    ➕ Créer la catégorie
+                </button>
+                <a href="{{ path('article_list') }}" class="btn btn-outline-light btn-block mt-2">
+                    Retour
+                </a>
+            </div>
+
+            {{ form_end(form, {'render_rest': false}) }}
+        </div>
+    </div>
+</div>
 {% endblock %}

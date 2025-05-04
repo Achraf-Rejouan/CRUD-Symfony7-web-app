@@ -110,7 +110,6 @@ class IndexController extends AbstractController
                 'label' => 'Catégorie',
                 'placeholder' => 'Choisissez une catégorie'
             ])
-            ->add('save', SubmitType::class, ['label' => 'Modifier'])
             ->getForm();
 
         $form->handleRequest($request);

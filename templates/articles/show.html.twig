@@ -3,9 +3,21 @@
 {% block title %}{{ article.nom }}{% endblock %}
 
 {% block body %}
-    <h1>{{ article.nom }}</h1>
-    <p>{{ article.prix }}</p>
-    <p>{{ article.categorie.titre }}</p>
-    <hr>
-    <a href="/">Retour</a>
+<div class="container mt-5">
+    <div class="card shadow-lg text-white bg-dark rounded-lg">
+        <div class="card-body">
+            <h2 class="card-title text-uppercase font-weight-bold mb-4">{{ article.nom }}</h2>
+            <p class="card-text">
+                <strong>Prix :</strong> {{ article.prix }} DT
+            </p>
+            <p class="card-text">
+                <strong>Catégorie :</strong> {{ article.categorie.titre }}
+            </p>
+            <hr class="bg-secondary">
+            <a href="{{ path('article_list') }}" class="btn btn-outline-light mt-3">
+                &larr; Retour à la liste
+            </a>
+        </div>
+    </div>
+</div>
 {% endblock %}
