@@ -30,7 +30,6 @@ cd your-repo-name
 composer install
 ```
 
-
 ### 3. Set up the database
 
 ```bash
@@ -46,7 +45,27 @@ Using Symfony CLI:
 symfony server:start
 ```
 
+Or with PHP built-in server:
+
+```bash
+php -S localhost:8000 -t public
+```
+
 ---
 
+## 🖼️ Screenshots
 
+### 🧭 Routes
+![route](public/main.png)
 
+### ✏️ Edit Article
+![edit](public/edit.png)
+
+### ➕ Add Article
+![add](public/add.png)
+
+### 📂 Add Category
+![addCategorie](public/addCategorie.png)
+
+### 🔍 Article Details
+![details](public/details.png)
