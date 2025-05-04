@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 15, 2025 at 01:15 PM
+-- Generation Time: May 04, 2025 at 11:15 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -39,7 +39,27 @@ CREATE TABLE `article` (
 --
 
 INSERT INTO `article` (`id`, `nom`, `prix`, `categorie_id`) VALUES
-(6, 'Samsung S25 Ultra', 4599, 1);
+(6, 'Samsung Galaxy S25 Ultra', 4589, 1),
+(7, 'iPhone 15 Pro Max', 5199, 1),
+(8, 'Xiaomi 13T Pro', 3299, 1),
+(9, 'OnePlus 12R', 2899, 1),
+(10, 'Google Pixel 8 Pro', 4899, 1),
+(11, 'Samsung Galaxy Z Fold5', 7499, 1),
+(12, 'Huawei P60 Pro', 3999, 1),
+(13, 'Sony Xperia 1 V', 4299, 1),
+(14, 'MacBook Pro M3', 8499, 2),
+(15, 'Dell XPS 15', 6699, 2),
+(16, 'HP Spectre x360', 5599, 2),
+(17, 'Lenovo ThinkPad X1 Carbon', 6299, 2),
+(18, 'Asus ROG Zephyrus G14', 5899, 2),
+(19, 'MSI Stealth 15', 4999, 2),
+(20, 'Acer Swift 5', 4199, 2),
+(21, 'Alienware Aurora R15', 9999, 3),
+(22, 'HP Omen 45L', 7999, 3),
+(23, 'iMac 24-inch M3', 6999, 3),
+(24, 'Lenovo Legion Tower 5', 5599, 3),
+(25, 'Asus ROG Strix G35', 8899, 3),
+(26, 'MSI MEG Trident X', 7499, 3);
 
 -- --------------------------------------------------------
 
@@ -138,7 +158,7 @@ ALTER TABLE `messenger_messages`
 -- AUTO_INCREMENT for table `article`
 --
 ALTER TABLE `article`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `categorie`
