@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use App\Entity\Article;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -95,7 +96,6 @@ class IndexController extends AbstractController
     #[Route('/article/edit/{id}', name: 'article_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, $id, EntityManagerInterface $em): Response
     {
-        $article = new Article();
         $article = $em->getRepository(Article::class)->find($id);
         if (!$article) {
             throw $this->createNotFoundException('Article non trouvé');
@@ -104,7 +104,13 @@ class IndexController extends AbstractController
         $form = $this->createFormBuilder($article)
             ->add('nom', TextType::class)
             ->add('prix', TextType::class)
-            ->add('save', SubmitType::class, array('label' => 'Modifier'))
+            ->add('categorie', EntityType::class, [
+                'class' => Categorie::class,
+                'choice_label' => 'titre',
+                'label' => 'Catégorie',
+                'placeholder' => 'Choisissez une catégorie'
+            ])
+            ->add('save', SubmitType::class, ['label' => 'Modifier'])
             ->getForm();
 
         $form->handleRequest($request);
@@ -112,6 +118,7 @@ class IndexController extends AbstractController
             $em->flush();
             return $this->redirectToRoute('article_list');
         }
+
         return $this->render('articles/edit.html.twig', [
             'form' => $form->createView()
         ]);

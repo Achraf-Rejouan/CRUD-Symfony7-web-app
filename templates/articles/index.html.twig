@@ -1,34 +1,42 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Liste des Articles {% endblock %}
+{% block title %}Liste des Articles{% endblock %}
 
 {% block body %}
+<div class="container mt-4">
+    <h2 class="mb-4 text-center text-uppercase font-weight-bold">Liste des Articles</h2>
+
     {% if articles %}
-        <table id="articles" class="table table-striped">
-            <thead>
-                <tr> 
-                    <th>Nom</th>
-                    <th>Prix</th>
-                    <th>Catégorie</th> 
-                    <th>Actions</th> 
-                </tr>
-            </thead>
-            <tbody>
-                {% for article in articles %}
+        <div class="table-responsive rounded-lg overflow-hidden shadow-sm">
+            <table id="articles" class="table table-dark table-striped mb-0">
+                <thead class="thead-light">
                     <tr>
-                        <td>{{ article.nom }}</td>
-                        <td>{{ article.prix }}</td>
-                        <td>{{ article.categorie.titre }}</td>
-                        <td>
-                            <a href="/article/{{ article.id }}" class="btn btn-dark">Détails</a>
-                            <a href="/article/edit/{{ article.id }}" class="btn btn-dark">Modifier</a>
-                            <a href="/article/delete/{{ article.id }}" class="btn btn-danger" onclick="return confirm('Etes-vous sur de supprimer cet article ?');">Supprimer</a>
-                        </td>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Prix</th>
+                        <th scope="col">Catégorie</th>
+                        <th scope="col">Actions</th>
                     </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    {% for article in articles %}
+                        <tr>
+                            <td>{{ article.nom }}</td>
+                            <td>{{ article.prix }}</td>
+                            <td>{{ article.categorie.titre }}</td>
+                            <td>
+                                <div class="d-flex flex-wrap">
+                                    <a href="/article/{{ article.id }}" class="btn btn-outline-light btn-sm mr-2 mb-2">Détails</a>
+                                    <a href="/article/edit/{{ article.id }}" class="btn btn-outline-warning btn-sm mr-2 mb-2">Modifier</a>
+                                    <a href="/article/delete/{{ article.id }}" class="btn btn-outline-danger btn-sm mb-2" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet article ?');">Supprimer</a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     {% else %}
-        <p>Aucun article</p>
+        <div class="alert alert-info text-center">Aucun article trouvé.</div>
     {% endif %}
+</div>
 {% endblock %}

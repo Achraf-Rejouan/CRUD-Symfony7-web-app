@@ -1,23 +1,23 @@
-<nav class="navbar navbar-expand-sm navbar-dark bg-primary mb-3">
-<div class="container">
-<a href="/" class="navbar-brand">Achraf REJOUAN</a>
-<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#mobile-nav">
-<span class="navbar-toggle-icon"></span>
-</button>
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark shadow-sm mb-4 py-3">
+  <div class="container">
+    <a href="/" class="navbar-brand text-uppercase font-weight-bold">Achraf Rejouan</a>
 
-<div class="collapse navbar-collapse" id="mobile-nav">
-<ul class="navbar-nav ml-auto">
-<li class="nav-item">
-<a href="/" class="nav-link">Home</a>
-</li>
-<li class="nav-item">
-<a href="{{path('new_article')}}" class="nav-link">Ajouter article</a>
-</li>
-<li class="nav-item">
-<a href="{{path('new_categorie')}}" class="nav-link">Ajouter catégorie</a>
-</li>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-</ul>
-</div>
-</div>
+    <div class="collapse navbar-collapse" id="mobile-nav">
+      <ul class="navbar-nav ml-auto align-items-center">
+        <li class="nav-item mx-2">
+          <a href="/" class="nav-link text-light">Home</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a href="{{path('new_article')}}" class="nav-link text-light">Ajouter article</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a href="{{path('new_categorie')}}" class="nav-link text-light">Ajouter catégorie</a>
+        </li>
+      </ul>
+    </div>
+  </div>
 </nav>
